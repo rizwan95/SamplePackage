@@ -8,10 +8,16 @@
 import Foundation
 
 public struct Feedback {
+    public init() {}
     public func sayHello() {
         if #available(iOS 15, *) {
-            let hello = String(localized: "hello")
-            print(hello)
+            if #available(macOS 12, *) {
+                let hello = String(localized: "hello")
+                print(hello)
+            } else {
+                // Fallback on earlier versions
+                print("hello")
+            }
         } else {
             print("hello")
         }
